@@ -82,12 +82,12 @@ CREATE TABLE `shops` (
 );
 
 INSERT INTO `shops` (store, item, price) VALUES
-	('TwentyFourSeven','bread',30),
-	('TwentyFourSeven','water',15),
-	('RobsLiquor','bread',30),
-	('RobsLiquor','water',15),
-	('LTDgasoline','bread',30),
-	('LTDgasoline','water',15)
+	('TwentyFourSeven','bread',7),
+	('TwentyFourSeven','water',2),
+	('RobsLiquor','bread',10),
+	('RobsLiquor','water',3),
+	('LTDgasoline','bread',12),
+	('LTDgasoline','water',4)
 ;
 
 ALTER TABLE `users` ADD COLUMN `phone_number` VARCHAR(10) NULL;
@@ -103,11 +103,11 @@ CREATE TABLE IF NOT EXISTS `phone_app_chat` (
 
 CREATE TABLE IF NOT EXISTS `phone_calls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `owner` varchar(10) NOT NULL COMMENT 'Num tel proprio',
-  `num` varchar(10) NOT NULL COMMENT 'Num reférence du contact',
-  `incoming` int(11) NOT NULL COMMENT 'Défini si on est à l''origine de l''appels',
+  `owner` varchar(10) NOT NULL COMMENT 'Owner',
+  `num` varchar(10) NOT NULL COMMENT 'Number of the contact',
+  `incoming` int(11) NOT NULL COMMENT 'who is calling',
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `accepts` int(11) NOT NULL COMMENT 'Appels accepter ou pas',
+  `accepts` int(11) NOT NULL COMMENT 'Accept the call or not',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
 
@@ -226,15 +226,15 @@ CREATE TABLE `addon_inventory_items` (
 );
 
 INSERT INTO `addon_account` (name, label, shared) VALUES
-  ('property_black_money','Argent Sale Propriété',0)
+  ('property_black_money','Dirty money property',0)
 ;
 
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
-  ('property','Propriété',0)
+  ('property','Property',0)
 ;
 
 INSERT INTO `datastore` (name, label, shared) VALUES
-  ('property','Propriété',0)
+  ('property','Property',0)
 ;
 
 CREATE TABLE `owned_properties` (
@@ -268,18 +268,18 @@ INSERT INTO `addon_account` (name, label, shared) VALUES
 ;
 
 INSERT INTO `jobs` (name, label) VALUES
-	('slaughterer', 'Abatteur'),
-	('fisherman', 'Pêcheur'),
-	('miner', 'Mineur'),
-	('lumberjack', 'Bûcheron'),
-	('fueler', 'Raffineur'),
-	('reporter', 'Journaliste'),
-	('tailor', 'Couturier')
+	('slaughterer', 'Butcher'),
+	('fisherman', 'Fisherman'),
+	('miner', 'Miner'),
+	('lumberjack', 'Lumberjack'),
+	('fueler', 'Refueler'),
+	('reporter', 'Journalist'),
+	('tailor', 'Tailor')
 ;
 
 INSERT INTO `items` (`name`, `label`, `weight`) VALUES
-	('bread', 'Pain', 1),
-	('water', 'Eau', 1)
+	('bread', 'bread', 1),
+	('water', 'water', 1)
 ;
 
 CREATE TABLE `billing` (
@@ -295,13 +295,13 @@ CREATE TABLE `billing` (
 );
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('lumberjack', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
-	('fisherman', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
-	('fueler', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
-	('reporter', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
-	('tailor',0,'employee','Intérimaire',0,'{\"mask_1\":0,\"arms\":1,\"glasses_1\":0,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":0,\"torso_1\":24,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":0,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":0,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":36,\"tshirt_2\":0,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":48,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}','{\"mask_1\":0,\"arms\":5,\"glasses_1\":5,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":1,\"torso_1\":52,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":1,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":23,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":42,\"tshirt_2\":4,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":36,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}'),
-	('miner', 0, 'employee', 'Intérimaire', 0, '{"tshirt_2":1,"ears_1":8,"glasses_1":15,"torso_2":0,"ears_2":2,"glasses_2":3,"shoes_2":1,"pants_1":75,"shoes_1":51,"bags_1":0,"helmet_2":0,"pants_2":7,"torso_1":71,"tshirt_1":59,"arms":2,"bags_2":0,"helmet_1":0}', '{}'),
-	('slaughterer',0,'employee','Intérimaire',0,'{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}','{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}')
+	('lumberjack', 0, 'employee', 'Interim', 60, '{}', '{}'),
+	('fisherman', 0, 'employee', 'Interim', 50, '{}', '{}'),
+	('fueler', 0, 'employee', 'Interim', 50, '{}', '{}'),
+	('reporter', 0, 'employee', 'Interim', 90, '{}', '{}'),
+	('tailor',0,'employee','Interim',40,'{\"mask_1\":0,\"arms\":1,\"glasses_1\":0,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":0,\"torso_1\":24,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":0,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":0,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":36,\"tshirt_2\":0,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":48,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}','{\"mask_1\":0,\"arms\":5,\"glasses_1\":5,\"hair_color_2\":4,\"makeup_1\":0,\"face\":19,\"glasses\":0,\"mask_2\":0,\"makeup_3\":0,\"skin\":29,\"helmet_2\":0,\"lipstick_4\":0,\"sex\":1,\"torso_1\":52,\"makeup_2\":0,\"bags_2\":0,\"chain_2\":0,\"ears_1\":-1,\"bags_1\":0,\"bproof_1\":0,\"shoes_2\":1,\"lipstick_2\":0,\"chain_1\":0,\"tshirt_1\":23,\"eyebrows_3\":0,\"pants_2\":0,\"beard_4\":0,\"torso_2\":0,\"beard_2\":6,\"ears_2\":0,\"hair_2\":0,\"shoes_1\":42,\"tshirt_2\":4,\"beard_3\":0,\"hair_1\":2,\"hair_color_1\":0,\"pants_1\":36,\"helmet_1\":-1,\"bproof_2\":0,\"eyebrows_4\":0,\"eyebrows_2\":0,\"decals_1\":0,\"age_2\":0,\"beard_1\":5,\"shoes\":10,\"lipstick_1\":0,\"eyebrows_1\":0,\"glasses_2\":0,\"makeup_4\":0,\"decals_2\":0,\"lipstick_3\":0,\"age_1\":0}'),
+	('miner', 0, 'employee', 'Interim', 100, '{"tshirt_2":1,"ears_1":8,"glasses_1":15,"torso_2":0,"ears_2":2,"glasses_2":3,"shoes_2":1,"pants_1":75,"shoes_1":51,"bags_1":0,"helmet_2":0,"pants_2":7,"torso_1":71,"tshirt_1":59,"arms":2,"bags_2":0,"helmet_1":0}', '{}'),
+	('slaughterer',0,'employee','Interim',100,'{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}','{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}')
 ;
 
 ALTER TABLE jobs add whitelisted BOOLEAN NOT NULL DEFAULT FALSE;
@@ -315,25 +315,25 @@ ALTER TABLE `users`
 ;
 
 INSERT INTO `items` (`name`, `label`, `weight`) VALUES
-	('alive_chicken', 'Poulet vivant', 1),
-	('slaughtered_chicken', 'Poulet abattu', 1),
-	('packaged_chicken', 'Poulet en barquette', 1),
-	('fish', 'Poisson', 1),
-	('stone', 'Pierre', 1),
-	('washed_stone', 'Pierre Lavée', 1),
-	('copper', 'Cuivre', 1),
-	('iron', 'Fer', 1),
-	('gold', 'Or', 1),
-	('diamond', 'Diamant', 1),
-	('wood', 'Bois', 1),
-	('cutted_wood', 'Bois coupé', 1),
-	('packaged_plank', 'Paquet de planches', 1),
-	('petrol', 'Pétrole', 1),
-	('petrol_raffin', 'Pétrole Raffiné', 1),
-	('essence', 'Essence', 1),
-	('wool', 'Laine', 1),
-	('fabric', 'Tissu', 1),
-	('clothe', 'Vêtement', 1)
+	('alive_chicken', 'Live chicken', 1),
+	('slaughtered_chicken', 'Chicken meat', 1),
+	('packaged_chicken', 'Package of chicken', 1),
+	('fish', 'Fish', 1),
+	('stone', 'Stone', 1),
+	('washed_stone', 'Clean stone', 1),
+	('copper', 'Copper', 1),
+	('iron', 'Iron', 1),
+	('gold', 'Gold', 1),
+	('diamond', 'Diamond', 1),
+	('wood', 'Wood', 1),
+	('cutted_wood', 'Cut wood', 1),
+	('packaged_plank', 'Bundled Planks', 1),
+	('petrol', 'Oil', 1),
+	('petrol_raffin', 'Refined Oil', 1),
+	('essence', 'Gasoline', 1),
+	('wool', 'Wool', 1),
+	('fabric', 'Fabric', 1),
+	('clothe', 'Cloth', 1)
 ;
 
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
@@ -433,26 +433,26 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 ;
 
 INSERT INTO `weashops` (`zone`, `item`, `price`) VALUES
-	('GunShop','WEAPON_PISTOL', 300),
-	('BlackWeashop','WEAPON_PISTOL', 500),
-	('GunShop', 'WEAPON_FLASHLIGHT', 60),
-	('BlackWeashop', 'WEAPON_FLASHLIGHT', 70),
-	('GunShop', 'WEAPON_MACHETE', 90),
+	('GunShop','WEAPON_PISTOL', 400),
+	('BlackWeashop','WEAPON_PISTOL', 600),
+	('GunShop', 'WEAPON_FLASHLIGHT', 20),
+	('BlackWeashop', 'WEAPON_FLASHLIGHT', 50),
+	('GunShop', 'WEAPON_MACHETE', 50),
 	('BlackWeashop', 'WEAPON_MACHETE', 110),
-	('GunShop', 'WEAPON_NIGHTSTICK', 150),
+	('GunShop', 'WEAPON_NIGHTSTICK', 100),
 	('BlackWeashop', 'WEAPON_NIGHTSTICK', 150),
-	('GunShop', 'WEAPON_BAT', 100),
-	('BlackWeashop', 'WEAPON_BAT', 100),
-	('GunShop', 'WEAPON_STUNGUN', 50),
-	('BlackWeashop', 'WEAPON_STUNGUN', 50),
+	('GunShop', 'WEAPON_BAT', 30),
+	('BlackWeashop', 'WEAPON_BAT', 50),
+	('GunShop', 'WEAPON_STUNGUN', 150),
+	('BlackWeashop', 'WEAPON_STUNGUN', 200),
 	('GunShop', 'WEAPON_MICROSMG', 1400),
 	('BlackWeashop', 'WEAPON_MICROSMG', 1700),
-	('GunShop', 'WEAPON_PUMPSHOTGUN', 3400),
-	('BlackWeashop', 'WEAPON_PUMPSHOTGUN', 3500),
-	('GunShop', 'WEAPON_ASSAULTRIFLE', 10000),
-	('BlackWeashop', 'WEAPON_ASSAULTRIFLE', 11000),
-	('GunShop', 'WEAPON_SPECIALCARBINE', 15000),
-	('BlackWeashop', 'WEAPON_SPECIALCARBINE', 16500),
+	('GunShop', 'WEAPON_PUMPSHOTGUN', 400),
+	('BlackWeashop', 'WEAPON_PUMPSHOTGUN', 500),
+	('GunShop', 'WEAPON_ASSAULTRIFLE', 1300),
+	('BlackWeashop', 'WEAPON_ASSAULTRIFLE', 1900),
+	('GunShop', 'WEAPON_SPECIALCARBINE', 2000),
+	('BlackWeashop', 'WEAPON_SPECIALCARBINE', 2500),
 	('GunShop', 'WEAPON_SNIPERRIFLE', 22000),
 	('BlackWeashop', 'WEAPON_SNIPERRIFLE', 24000),
 	('GunShop', 'WEAPON_FIREWORK', 18000),
@@ -468,9 +468,9 @@ INSERT INTO `weashops` (`zone`, `item`, `price`) VALUES
 	('GunShop', 'WEAPON_SMOKEGRENADE', 100),
 	('BlackWeashop', 'WEAPON_SMOKEGRENADE', 100),
 	('BlackWeashop', 'WEAPON_APPISTOL', 1100),
-	('BlackWeashop', 'WEAPON_CARBINERIFLE', 12000),
-	('BlackWeashop', 'WEAPON_HEAVYSNIPER', 30000),
-	('BlackWeashop', 'WEAPON_MINIGUN', 45000),
+	('BlackWeashop', 'WEAPON_CARBINERIFLE', 2000),
+	('BlackWeashop', 'WEAPON_HEAVYSNIPER', 3000),
+	('BlackWeashop', 'WEAPON_MINIGUN', 10000),
 	('BlackWeashop', 'WEAPON_RAILGUN', 50000),
 	('BlackWeashop', 'WEAPON_STICKYBOMB', 500)
 ;
@@ -478,22 +478,22 @@ INSERT INTO `weashops` (`zone`, `item`, `price`) VALUES
 USE `es_extended`;
 
 INSERT INTO `addon_account` (name, label, shared) VALUES
-	('society_cardealer','Concessionnaire',1)
+	('society_cardealer','Car Dealer',1)
 ;
 
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
-	('society_cardealer','Concesionnaire',1)
+	('society_cardealer','Car Dealer',1)
 ;
 
 INSERT INTO `jobs` (name, label) VALUES
-	('cardealer','Concessionnaire')
+	('cardealer','Car Dealer')
 ;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('cardealer',0,'recruit','Recrue',10,'{}','{}'),
-	('cardealer',1,'novice','Novice',25,'{}','{}'),
-	('cardealer',2,'experienced','Experimente',40,'{}','{}'),
-	('cardealer',3,'boss','Patron',0,'{}','{}')
+	('cardealer',0,'recruit','Recruit',100,'{}','{}'),
+	('cardealer',1,'novice','Novice',250,'{}','{}'),
+	('cardealer',2,'experienced','Experienced',400,'{}','{}'),
+	('cardealer',3,'boss','Boss',500,'{}','{}')
 ;
 
 CREATE TABLE `cardealer_vehicles` (
@@ -543,7 +543,7 @@ INSERT INTO `vehicle_categories` (name, label) VALUES
 	('offroad','Off Road'),
 	('suvs','SUVs'),
 	('vans','Vans'),
-	('motorcycles','Motos')
+	('motorcycles','Motocycles')
 ;
 
 CREATE TABLE `vehicles` (
@@ -819,11 +819,14 @@ INSERT INTO `jobs` (name, label) VALUES
 ;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('police',0,'recruit','Recruit',20,'{}','{}'),
-	('police',1,'officer','Officer',40,'{}','{}'),
-	('police',2,'sergeant','Sergeant',60,'{}','{}'),
-	('police',3,'lieutenant','Lieutenant',85,'{}','{}'),
-	('police',4,'boss','Chief',100,'{}','{}')
+	('police',0,'recruit','Recruit',250,'{}','{}'),
+	('police',1,'officer','Trooper',300,'{}','{}'),
+	('police',2,'sr','Sr Trooper',350,'{}','{}'),
+	('police',3,'corp','Corporal',450,'{}','{}'),
+	('police',4,'sergeant','Sergeant',500,'{}','{}'),
+	('police',5,'detective','Detective',600,'{}','{}'),
+	('police',6,'lieutenant','Lieutenant',850,'{}','{}'),
+	('police',7,'boss','High Command',1000,'{}','{}')
 ;
 
 CREATE TABLE `fine_types` (
@@ -852,11 +855,11 @@ INSERT INTO `jobs` (name, label) VALUES
 ;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('taxi',0,'recrue','Recrue',12,'{"hair_2":0,"hair_color_2":0,"torso_1":32,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":0,"age_2":0,"glasses_2":0,"ears_2":0,"arms":27,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
-	('taxi',1,'novice','Novice',24,'{"hair_2":0,"hair_color_2":0,"torso_1":32,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":0,"age_2":0,"glasses_2":0,"ears_2":0,"arms":27,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
-	('taxi',2,'experimente','Experimente',36,'{"hair_2":0,"hair_color_2":0,"torso_1":26,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":57,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":11,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
-	('taxi',3,'uber','Uber',48,'{"hair_2":0,"hair_color_2":0,"torso_1":26,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":57,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":11,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
-	('taxi',4,'boss','Patron',0,'{"hair_2":0,"hair_color_2":0,"torso_1":29,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":1,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":4,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}')
+	('taxi',0,'recrue','Recruit',120,'{"hair_2":0,"hair_color_2":0,"torso_1":32,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":0,"age_2":0,"glasses_2":0,"ears_2":0,"arms":27,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
+	('taxi',1,'novice','Driver',240,'{"hair_2":0,"hair_color_2":0,"torso_1":32,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":0,"age_2":0,"glasses_2":0,"ears_2":0,"arms":27,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
+	('taxi',2,'experimente','Experienced Driver',360,'{"hair_2":0,"hair_color_2":0,"torso_1":26,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":57,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":11,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
+	('taxi',3,'uber','Uber Driver',480,'{"hair_2":0,"hair_color_2":0,"torso_1":26,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":57,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":11,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}'),
+	('taxi',4,'boss','Executive Driver',500,'{"hair_2":0,"hair_color_2":0,"torso_1":29,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":31,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":4,"age_2":0,"glasses_2":0,"ears_2":0,"arms":1,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":0,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":0,"bproof_1":0,"mask_1":0,"decals_1":0,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":4,"eyebrows_1":0,"face":0,"shoes_1":10,"pants_1":24}', '{"hair_2":0,"hair_color_2":0,"torso_1":57,"bags_1":0,"helmet_2":0,"chain_2":0,"eyebrows_3":0,"makeup_3":0,"makeup_2":0,"tshirt_1":38,"makeup_1":0,"bags_2":0,"makeup_4":0,"eyebrows_4":0,"chain_1":0,"lipstick_4":0,"bproof_2":0,"hair_color_1":0,"decals_2":0,"pants_2":1,"age_2":0,"glasses_2":0,"ears_2":0,"arms":21,"lipstick_1":0,"ears_1":-1,"mask_2":0,"sex":1,"lipstick_3":0,"helmet_1":-1,"shoes_2":0,"beard_2":0,"beard_1":0,"lipstick_2":0,"beard_4":0,"glasses_1":5,"bproof_1":0,"mask_1":0,"decals_1":1,"hair_1":0,"eyebrows_2":0,"beard_3":0,"age_1":0,"tshirt_2":0,"skin":0,"torso_2":0,"eyebrows_1":0,"face":0,"shoes_1":49,"pants_1":11}')
 ;
 
 INSERT INTO `fine_types` (label, amount, category) VALUES
@@ -865,21 +868,21 @@ INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Driving on the wrong side of the road', 250, 0),
 	('Illegal U-Turn', 250, 0),
 	('Illegally Driving Off-road', 170, 0),
-	('Refusing a Lawful Command', 30, 0),
+	('Refusing a Lawful Command', 180, 0),
 	('Illegally Stopping a Vehicle', 150, 0),
 	('Illegal Parking', 70, 0),
 	('Failing to Yield to the right', 70, 0),
 	('Failure to comply with Vehicle Information', 90, 0),
-	('Failing to stop at a Stop Sign ', 105, 0),
+	('Failing to stop at a Stop Sign ', 130, 0),
 	('Failing to stop at a Red Light', 130, 0),
 	('Illegal Passing', 100, 0),
-	('Driving an illegal Vehicle', 100, 0),
-	('Driving without a License', 1500, 0),
+	('Driving an illegal Vehicle', 150, 0),
+	('Driving without a License', 500, 0),
 	('Hit and Run', 800, 0),
 	('Exceeding Speeds Over < 5 mph', 90, 0),
 	('Exceeding Speeds Over 5-15 mph', 120, 0),
-	('Exceeding Speeds Over 15-30 mph', 180, 0),
-	('Exceeding Speeds Over > 30 mph', 300, 0),
+	('Exceeding Speeds Over 15-30 mph', 380, 0),
+	('Exceeding Speeds Over > 30 mph', 600, 0),
 	('Impeding traffic flow', 110, 1),
 	('Public Intoxication', 90, 1),
 	('Disorderly conduct', 90, 1),
@@ -890,56 +893,56 @@ INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Verbal Threat towards an LEO', 150, 1),
 	('Providing False Information', 250, 1),
 	('Attempt of Corruption', 1500, 1),
-	('Brandishing a weapon in city Limits', 120, 2),
-	('Brandishing a Lethal Weapon in city Limits', 300, 2),
+	('Brandishing a weapon in city Limits', 200, 2),
+	('Brandishing a Lethal Weapon in city Limits', 600, 2),
 	('No Firearms License', 600, 2),
-	('Possession of an Illegal Weapon', 700, 2),
+	('Possession of an Illegal Weapon', 1700, 2),
 	('Possession of Burglary Tools', 300, 2),
-	('Grand Theft Auto', 1800, 2),
-	('Intent to Sell/Distrube of an illegal Substance', 1500, 2),
-	('Frabrication of an Illegal Substance', 1500, 2),
+	('Grand Theft Auto', 2800, 2),
+	('Intent to Sell/Distrube of an illegal Substance', 2500, 2),
+	('Frabrication of an Illegal Substance', 3500, 2),
 	('Possession of an Illegal Substance ', 650, 2),
-	('Kidnapping of a Civilan', 1500, 2),
-	('Kidnapping of an LEO', 2000, 2),
+	('Kidnapping of a Civilan', 5500, 2),
+	('Kidnapping of an LEO', 10000, 2),
 	('Robbery', 650, 2),
-	('Armed Robbery of a Store', 650, 2),
+	('Armed Robbery of a Store', 850, 2),
 	('Armed Robbery of a Bank', 1500, 2),
-	('Assault on a Civilian', 2000, 3),
-	('Assault of an LEO', 2500, 3),
-	('Attempt of Murder of a Civilian', 3000, 3),
-	('Attempt of Murder of an LEO', 5000, 3),
+	('Assault on a Civilian', 2500, 3),
+	('Assault of an LEO', 3500, 3),
+	('Attempt of Murder of a Civilian', 5000, 3),
+	('Attempt of Murder of an LEO', 10000, 3),
 	('Murder of a Civilian', 10000, 3),
 	('Murder of an LEO', 30000, 3),
-	('Involuntary manslaughter', 1800, 3),
+	('Involuntary manslaughter', 2800, 3),
 	('Fraud', 2000, 2);
 
 INSERT INTO `addon_account` (name, label, shared) VALUES
-	('society_mechanic', 'Mécano', 1)
+	('society_mechanic', 'Mechanic', 1)
 ;
 
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
-	('society_mechanic', 'Mécano', 1)
+	('society_mechanic', 'Mechanic', 1)
 ;
 
 INSERT INTO `jobs` (name, label) VALUES
-	('mechanic', 'Mécano')
+	('mechanic', 'Mechanic')
 ;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('mechanic',0,'recrue','Recrue',12,'{}','{}'),
-	('mechanic',1,'novice','Novice',24,'{}','{}'),
-	('mechanic',2,'experimente','Experimente',36,'{}','{}'),
-	('mechanic',3,'chief',"Chef d\'équipe",48,'{}','{}'),
-	('mechanic',4,'boss','Patron',0,'{}','{}')
+	('mechanic',0,'recrue','Recruit',130,'{}','{}'),
+	('mechanic',1,'novice','Novice',245,'{}','{}'),
+	('mechanic',2,'experimente','Experienced',369,'{}','{}'),
+	('mechanic',3,'chief',"Chief Mechanic",488,'{}','{}'),
+	('mechanic',4,'boss','Shop Owner',500,'{}','{}')
 ;
 
 INSERT INTO `items` (name, label, weight) VALUES
-	('gazbottle', 'bouteille de gaz', 2),
-	('fixtool', 'outils réparation', 2),
-	('carotool', 'outils carosserie', 2),
-	('blowpipe', 'Chalumeaux', 2),
-	('fixkit', 'Kit réparation', 3),
-	('carokit', 'Kit carosserie', 3)
+	('gazbottle', 'Can of Gas', 2),
+	('fixtool', 'Repair Tools', 2),
+	('carotool', 'Body work tools', 2),
+	('blowpipe', 'Torches', 2),
+	('fixkit', 'Repair Kit', 3),
+	('carokit', 'Carbody kit', 3)
 ;
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
@@ -962,10 +965,10 @@ INSERT INTO `datastore` (name, label, shared) VALUES
 ;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
-	('ambulance',0,'ambulance','Ambulancier',20,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-	('ambulance',1,'doctor','Medecin',40,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-	('ambulance',2,'chief_doctor','Medecin-chef',60,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
-	('ambulance',3,'boss','Chirurgien',80,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}')
+	('ambulance',0,'ambulance','EMT',200,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+	('ambulance',1,'doctor','Doctor',400,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+	('ambulance',2,'chief_doctor','Senior Doctor',600,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}'),
+	('ambulance',3,'boss','Head Doctor',800,'{\"tshirt_2\":0,\"hair_color_1\":5,\"glasses_2\":3,\"shoes\":9,\"torso_2\":3,\"hair_color_2\":0,\"pants_1\":24,\"glasses_1\":4,\"hair_1\":2,\"sex\":0,\"decals_2\":0,\"tshirt_1\":15,\"helmet_1\":8,\"helmet_2\":0,\"arms\":92,\"face\":19,\"decals_1\":60,\"torso_1\":13,\"hair_2\":0,\"skin\":34,\"pants_2\":5}','{\"tshirt_2\":3,\"decals_2\":0,\"glasses\":0,\"hair_1\":2,\"torso_1\":73,\"shoes\":1,\"hair_color_2\":0,\"glasses_1\":19,\"skin\":13,\"face\":6,\"pants_2\":5,\"tshirt_1\":75,\"pants_1\":37,\"helmet_1\":57,\"torso_2\":0,\"arms\":14,\"sex\":1,\"glasses_2\":0,\"decals_1\":0,\"hair_2\":0,\"helmet_2\":0,\"hair_color_1\":0}')
 ;
 
 INSERT INTO `jobs` (name, label) VALUES
